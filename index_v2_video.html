@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu 💙💜</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{overflow:hidden;height:100vh;color:#fff;background:linear-gradient(-45deg,#60A5FA,#818CF8,#8B5CF6,#A855F7);background-size:400% 400%;animation:bg 12s ease infinite}
+@keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.slide{display:none;height:100vh;align-items:center;justify-content:center;padding:20px}
+.slide.active{display:flex}
+.card{max-width:720px;width:100%;text-align:center;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);padding:25px;border-radius:24px}
+.gif,.photo,video{width:220px;height:220px;object-fit:cover;border-radius:20px;margin-bottom:15px}
+.pin{display:flex;gap:8px;justify-content:center;margin:15px 0}
+.box{width:42px;height:52px;background:#fff;color:#6d28d9;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.keys{display:grid;grid-template-columns:repeat(3,70px);gap:10px;justify-content:center}
+.keys button,.next,.back{border:none;border-radius:16px;padding:12px;cursor:pointer;font-family:'Poppins',sans-serif}
+.next,.back{padding:12px 24px;border-radius:999px;margin-top:15px;color:#6d28d9;font-weight:600}
+.slider{width:100%}
+.note{background:#fff;color:#333;padding:18px;border-radius:18px;text-align:left;white-space:pre-wrap;min-height:220px}
+iframe{width:100%;height:352px;border:none;border-radius:16px}
+.small{font-size:12px}
+.rain,.heart{position:fixed;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh)}}
+</style>
+</head>
+<body>
+
+<script>
+const CONFIG={
+password:"123456",
+clue:"Isi clue di sini 💜",
+photo1:"foto1.jpg",
+photo2:"foto2.jpg",
+video6:"video.mp4",
+slide4Title:"ISI SENDIRI",
+slide4Text:"ISI SENDIRI",
+slide5Title:"ISI SENDIRI",
+slide5Text:"ISI SENDIRI",
+slide6Title:"ISI SENDIRI",
+slide6Text:"ISI SENDIRI",
+spotify:"https://open.spotify.com/embed/track/11dFghVXANMlKmJXsNCbNl",
+letter:`Hai cantik 💜
+
+Isi surat panjang kamu di sini.`
+}
+</script>
+
+<div class="slide active" id="s1"><div class="card">
+<img class="gif" src="https://media.tenor.com/F2iA6Xq3S4sAAAAC/hello-cat.gif">
+<h1>Coba tebak apa passwordnya 🔐</h1>
+<div id="pin" class="pin"></div>
+<div id="keys" class="keys"></div>
+<p class="small" id="clue"></p>
+</div></div>
+
+<div class="slide" id="s2"><div class="card">
+<img class="gif" src="https://media.tenor.com/F2iA6Xq3S4sAAAAC/hello-cat.gif">
+<h1>Hi cantik 👋</h1>
+<button class="next" onclick="next()">Nexttt</button>
+</div></div>
+
+<div class="slide" id="s3"><div class="card">
+<h1>Coba rate dulu seberapa sayang kamu sama aku 💕</h1>
+<input id="love" class="slider" type="range" min="0" max="100" value="50">
+<h2 id="loveText">50% 😊</h2>
+<button class="next" onclick="next()">Nexttt</button>
+</div></div>
+
+<div class="slide" id="s4"><div class="card">
+<img class="photo" id="p1">
+<h2 id="t4"></h2><p id="d4"></p>
+<button class="next" onclick="next()">Nexttt</button>
+</div></div>
+
+<div class="slide" id="s5"><div class="card">
+<img class="photo" id="p2">
+<h2 id="t5"></h2><p id="d5"></p>
+<button class="next" onclick="next()">Nexttt</button>
+</div></div>
+
+<div class="slide" id="s6"><div class="card">
+<video id="video6" controls playsinline>
+<source id="videoSource" src="video.mp4" type="video/mp4">
+</video>
+<h2 id="t6"></h2><p id="d6"></p>
+<button class="next" onclick="next()">Nexttt</button>
+</div></div>
+
+<div class="slide" id="s7"><div class="card">
+<h1>Lagu Buat Kamu 🎵</h1>
+<iframe id="spotify"></iframe>
+<button class="next" onclick="next()">Nexttt</button>
+</div></div>
+
+<div class="slide" id="s8"><div class="card">
+<h1>Untuk Kamu 💌</h1>
+<div class="note" id="letter"></div>
+<button class="back" onclick="location.reload()">🔄 Kembali ke Awal</button>
+</div></div>
+
+<script>
+let current=1,p='';
+clue.textContent='clue : '+CONFIG.clue;
+p1.src=CONFIG.photo1;p2.src=CONFIG.photo2;
+t4.textContent=CONFIG.slide4Title;d4.textContent=CONFIG.slide4Text;
+t5.textContent=CONFIG.slide5Title;d5.textContent=CONFIG.slide5Text;
+t6.textContent=CONFIG.slide6Title;d6.textContent=CONFIG.slide6Text;
+videoSource.src=CONFIG.video6;video6.load();
+spotify.src=CONFIG.spotify;
+
+function render(){pin.innerHTML='';for(let i=0;i<6;i++){let b=document.createElement('div');b.className='box';b.textContent=p[i]?'•':'';pin.appendChild(b)}}
+render();
+
+[1,2,3,4,5,6,7,8,9,'⌫',0,'OK'].forEach(v=>{let b=document.createElement('button');b.textContent=v;b.onclick=()=>press(v);keys.appendChild(b)});
+
+function press(v){
+if(v==='⌫'){p=p.slice(0,-1);return render();}
+if(v==='OK'){if(p===CONFIG.password){for(let i=0;i<25;i++)setTimeout(heart,i*80);next()}else{alert('Password salah 😝');p='';render()}return;}
+if(p.length<6){p+=v;render();}
+}
+
+function next(){document.getElementById('s'+current).classList.remove('active');current++;document.getElementById('s'+current).classList.add('active');if(current===8){typeLetter();rain();}}
+
+love.oninput=()=>{let v=+love.value;loveText.textContent=v+'% '+(v==100?'💍':v>70?'🥰':v>30?'😊':'😭')}
+
+function heart(){let h=document.createElement('div');h.className='heart';h.innerHTML=Math.random()>.5?'💙':'💜';h.style.left=Math.random()*100+'vw';h.style.top='100vh';document.body.appendChild(h);h.animate([{transform:'translateY(0)'},{transform:'translateY(-120vh)'}],{duration:4000});setTimeout(()=>h.remove(),4000);}
+
+let started=false;
+function typeLetter(){if(started)return;started=true;let i=0;let s=CONFIG.letter;let x=setInterval(()=>{letter.textContent+=s.charAt(i++);if(i>=s.length)clearInterval(x)},35)}
+function rain(){['💙','💜','🐧','🐨'].forEach(()=>{});for(let i=0;i<40;i++){let e=document.createElement('div');e.className='rain';e.innerHTML=['💙','💜','🐧','🐨'][Math.floor(Math.random()*4)];e.style.left=Math.random()*100+'vw';e.style.top='-50px';e.style.animation='fall '+(4+Math.random()*4)+'s linear infinite';document.body.appendChild(e)}}
+</script>
+</body>
+</html>
