@@ -4,263 +4,256 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Untuk Abi 💙💜</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-
-body{
-overflow-x:hidden;
-overflow-y:auto;
-min-height:100vh;
-color:#fff;
-background:linear-gradient(-45deg,#60A5FA,#818CF8,#8B5CF6,#A855F7);
-background-size:400% 400%;
-animation:bg 12s ease infinite;
-}
-
-@keyframes bg{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
-
-.slide{
-display:none;
-min-height:100vh;
-align-items:center;
-justify-content:center;
-padding:40px 20px;
-}
-
+/* Ubah overflow dan height supaya bisa di-scroll */
+body{overflow-x:hidden;overflow-y:auto;min-height:100vh;color:#fff;background:linear-gradient(-45deg,#60A5FA,#818CF8,#8B5CF6,#A855F7);background-size:400% 400%;animation:bg 12s ease infinite}
+@keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.slide{display:none;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
 .slide.active{display:flex}
-
-.card{
-max-width:720px;
-width:100%;
-text-align:center;
-background:rgba(255,255,255,.15);
-backdrop-filter:blur(12px);
-padding:25px;
-border-radius:24px;
-}
-
-.gif,.photo,video{
-width:220px;
-height:220px;
-object-fit:cover;
-border-radius:20px;
-margin-bottom:15px;
-}
-
-.pin{
-display:flex;
-gap:8px;
-justify-content:center;
-margin:15px 0;
-}
-
-.box{
-width:42px;
-height:52px;
-background:#fff;
-color:#6d28d9;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:1.5rem;
-font-weight:600;
-border:2px solid #6d28d9;
-}
-
-.keys{
-display:grid;
-grid-template-columns:repeat(3,70px);
-gap:10px;
-justify-content:center;
-}
-
-.keys button{
-border:none;
-border-radius:16px;
-padding:12px;
-cursor:pointer;
-font-weight:600;
-font-size:1.1rem;
-}
-
-.next,.back{
-border:none;
-padding:12px 24px;
-border-radius:999px;
-margin-top:15px;
-cursor:pointer;
-color:#6d28d9;
-font-weight:600;
-}
-
+.card{max-width:720px;width:100%;text-align:center;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);padding:25px;border-radius:24px;box-shadow:0 8px 32px rgba(0,0,0,0.1)}
+.gif,.photo,video{width:220px;height:220px;object-fit:cover;border-radius:20px;margin-bottom:15px}
+.pin{display:flex;gap:8px;justify-content:center;margin:15px 0}
+.box{width:42px;height:52px;background:#fff;color:#6d28d9;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:600}
+.keys{display:grid;grid-template-columns:repeat(3,70px);gap:10px;justify-content:center;margin-top:20px}
+/* Efek klik tombol ditambahkan agar mirip lockscreen HP */
+.keys button{border:none;border-radius:16px;padding:12px;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:600;font-size:1.1rem;color:#333;background:#fff;transition:0.1s}
+.keys button:active{transform:scale(0.92);background:#e2e8f0}
+.next,.back{border:none;padding:12px 24px;border-radius:999px;margin-top:15px;cursor:pointer;font-family:'Poppins',sans-serif;color:#6d28d9;font-weight:600;background:#fff;transition:0.1s}
+.next:active,.back:active{transform:scale(0.95)}
 .slider{width:100%}
-
-.desc{
-font-size:1rem;
-font-weight:400;
-line-height:1.6;
-margin-top:10px;
-}
-
-.note{
-background:#fff;
-color:#333;
-padding:20px;
-border-radius:18px;
-text-align:left;
-white-space:pre-wrap;
-min-height:220px;
-}
-
+.desc{font-size:1rem;font-weight:400;line-height:1.6;margin-top:10px}
+.note{background:#fff;color:#333;padding:20px;border-radius:18px;text-align:left;white-space:pre-wrap;min-height:220px;font-size:1rem;line-height:1.6}
+iframe{width:100%;height:352px;border:none;border-radius:16px}
 .small{font-size:12px;margin-top:10px}
+.rain,.heart{position:fixed;pointer-events:none;z-index:9999}
+@keyframes fall{to{transform:translateY(110vh)}}
 </style>
 </head>
-
 <body>
 
 <script>
 const CONFIG={
 password:"090623",
-clue:"hari abi ilam 💙💜",
+clue:"Clue = hari abi ilam 💙💜",
 photo1:"foto3.jpg",
 photo2:"foto2.jpg",
 video6:"WhatsApp Video 2026-06-09 at 08.24.24.mp4",
-
-slide4Text:"Inii pas pertama kali abi ilam ngedatee...",
-slide5Text:"Terima kasih abii udah jadi bagian hidup ilamm...",
-slide6Text:"Recap video setahun terakhir 💙💜",
-
-letter:`Helooo abi 💙💜
-
-Happy anniversary ke-3...
-I love you Abiii!`
-};
+slide4Text:"Inii pas pertama kali abi ilam ngedatee, tak terasaa abi ilam udah 3 tahunn, ilam senangg bisaa ketemu abi",
+slide5Text:"Terima kasih abii udah jadi bagian dalam hidup ilamm, ilam berharap abi ilam bisa ngebuat kenangan2 dan ngelakuin banyak hal bareng terusss",
+slide6Text:"Ilam sayangg sama abii 💙💜, ini ada vidio recap abi ilam setahun terakhirr dari hp ilam",
+spotify:`<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/3n3Ppam7vgaBgEoMnPNPT8?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`, 
+letter:`Helooo abi 💙💜\n\nHappy anniversary yang ke-3, abii!\nTak terasa udah 3 tahun abi ilam bareng terus, banyak hal yang udah kita lalui selama 3 tahun ini. Terima kasih yaa abii udah selalu jadii support sistem buat ilam, selalu ada buat ilam, selalu bisa ngertiin kondisi ilamm. Selama 3 tahun ini, takk semuanya berjalann mulus, kita lewatin banyak banget hal mulai dari yang senang-senang, sampai abi ilam berantem hebat, adu ego, saling ngambek, dan beda pendapat. Tapi dari semua itu, ilam bersyukur kita tak pernah nyerah satu sama lain. Makasih yaa abi udah selalu mau nurunin ego, mau diskusi cari jalan tengah, dan tetap milih ilamm pas kita lagi berantem hebat. Semoga ke depannya kita semakin dewasa ngadepin masalah dan semakin sabarr. I love you Abiii!`
+}
 </script>
 
-<!-- SLIDE 1 PIN -->
-<div class="slide active" id="s1">
-<div class="card">
-<h1>Coba tebak passwordnya 💙</h1>
-
+<div class="slide active" id="s1"><div class="card">
+<img class="gif" src="hii.gif" alt="gif">
+<h1>Coba abi tebakk apa passwordnyaa!!</h1>
+<p class="small" id="clue"></p>
 <div id="pin" class="pin"></div>
 <div id="keys" class="keys"></div>
+</div></div>
 
-<p class="small" id="clue"></p>
-</div>
-</div>
+<div class="slide" id="s2"><div class="card">
+<img class="gif" src="elo.gif" alt="gif">
+<h1>Hii, abi pacar ilam 👋</h1>
+<button class="next" onclick="nextSlide()">Nexttt</button>
+</div></div>
 
-<!-- SLIDES -->
-<div class="slide" id="s2"><div class="card"><h1>Hai 👋</h1><button class="next" onclick="next()">Next</button></div></div>
-<div class="slide" id="s3"><div class="card"><h1>Love meter 💕</h1><input id="love" type="range" min="0" max="100" value="50"><h2 id="loveText">50%</h2><button class="next" onclick="next()">Next</button></div></div>
-<div class="slide" id="s4"><div class="card"><h1>Special day 💙</h1><button class="next" onclick="next()">Next</button></div></div>
-<div class="slide" id="s5"><div class="card"><h1>Anniversary 💜</h1><button class="next" onclick="next()">Next</button></div></div>
-<div class="slide" id="s6"><div class="card"><h1>Surprise 🎁</h1><button class="next" onclick="next()">Next</button></div></div>
+<div class="slide" id="s3"><div class="card">
+<h1>Coba abi ratee dulu seberapa sayang abi sama ilam 💕</h1>
+<input id="love" class="slider" type="range" min="0" max="100" value="50">
+<h2 id="loveText">50% 😊</h2>
+<button class="next" onclick="nextSlide()">Nexttt</button>
+</div></div>
 
-<div class="slide" id="s7"><div class="card"><img id="p1" class="photo"><p id="d4"></p><button class="next" onclick="next()">Next</button></div></div>
-<div class="slide" id="s8"><div class="card"><img id="p2" class="photo"><p id="d5"></p><button class="next" onclick="next()">Next</button></div></div>
+<div class="slide" id="s4"><div class="card">
+<img class="gif" src="bunga.gif" alt="gif">
+<h1>Hari inii adalahh hari spesial buat abi ilamm 💙💜</h1>
+<button class="next" onclick="nextSlide()">Nexttt</button>
+</div></div>
 
-<div class="slide" id="s9"><div class="card"><video id="video6" controls><source id="videoSource"></video><p id="d6"></p><button class="next" onclick="next()">Next</button></div></div>
+<div class="slide" id="s5"><div class="card">
+<img class="gif" src="yippe.gif" alt="gif">
+<h1>Happy anniversary abii, ilam sayangg sama abii 💙💜</h1>
+<button class="next" onclick="nextSlide()">Nexttt</button>
+</div></div>
+
+<div class="slide" id="s6"><div class="card">
+<img class="gif" src="supris.gif" alt="gif">
+<h1>Ini ilamm ada sesuatu buat abii</h1>
+<button class="next" onclick="nextSlide()">Nexttt</button>
+</div></div>
+
+<div class="slide" id="s7"><div class="card">
+<img class="photo" id="p1" alt="photo1">
+<p id="d4" class="desc"></p>
+<button class="next" onclick="nextSlide()">Nexttt</button>
+</div></div>
+
+<div class="slide" id="s8"><div class="card">
+<img class="photo" id="p2" alt="photo2">
+<p id="d5" class="desc"></p>
+<button class="next" onclick="nextSlide()">Nexttt</button>
+</div></div>
+
+<div class="slide" id="s9"><div class="card">
+<video id="video6" controls playsinline>
+<source id="videoSource" src="" type="video/mp4">
+</video>
+<p id="d6" class="desc"></p>
+<button class="next" onclick="nextSlide()">Nexttt</button>
+</div></div>
 
 <div class="slide" id="s10"><div class="card">
-<h1>Music 🎵</h1>
-<iframe id="spotify"></iframe>
-<button class="next" onclick="next()">Next</button>
+<h1>Laguu buat abii</h1>
+<div id="spotifyContainer"></div>
+<button class="next" onclick="nextSlide()">Nexttt</button>
 </div></div>
 
 <div class="slide" id="s11"><div class="card">
-<h1>Letter 💌</h1>
-<div id="letter" class="note"></div>
-<button class="back" onclick="location.reload()">Restart</button>
+<h1>Untuk abi 💌</h1>
+<div class="note" id="letter"></div>
+<button class="back" onclick="location.reload()">🔄 Kembali ke Awal</button>
 </div></div>
 
 <script>
-let current=1;
-let p='';
+// Pastikan kode hanya berjalan setelah HTML beres dimuat
+document.addEventListener("DOMContentLoaded", () => {
+    let current = 1, p = '';
+    
+    // Tarik semua elemen menggunakan getElementById (Standar Aman)
+    const clueEl = document.getElementById('clue');
+    const p1El = document.getElementById('p1');
+    const p2El = document.getElementById('p2');
+    const d4El = document.getElementById('d4');
+    const d5El = document.getElementById('d5');
+    const d6El = document.getElementById('d6');
+    const videoSource = document.getElementById('videoSource');
+    const videoPlayer = document.getElementById('video6');
+    const spotifyContainer = document.getElementById('spotifyContainer');
+    const pinContainer = document.getElementById('pin');
+    const keysContainer = document.getElementById('keys');
+    const loveSlider = document.getElementById('love');
+    const loveText = document.getElementById('loveText');
+    const letterText = document.getElementById('letter');
 
-const pin=document.getElementById('pin');
-const keys=document.getElementById('keys');
-const clue=document.getElementById('clue');
+    // Masukkan data dari CONFIG ke HTML
+    clueEl.textContent = CONFIG.clue;
+    p1El.src = CONFIG.photo1;
+    p2El.src = CONFIG.photo2;
+    d4El.textContent = CONFIG.slide4Text;
+    d5El.textContent = CONFIG.slide5Text;
+    d6El.textContent = CONFIG.slide6Text;
+    videoSource.src = CONFIG.video6;
+    videoPlayer.load();
+    
+    // Render kode embed Spotify langsung ke dalam container
+    spotifyContainer.innerHTML = CONFIG.spotify;
 
-const p1=document.getElementById('p1');
-const p2=document.getElementById('p2');
+    // --- LOGIKA KUNCI PIN ---
+    function renderPin() {
+        pinContainer.innerHTML = '';
+        for (let i = 0; i < 6; i++) {
+            let b = document.createElement('div');
+            b.className = 'box';
+            b.textContent = p[i] ? '•' : '';
+            pinContainer.appendChild(b);
+        }
+    }
+    
+    // Render kotak PIN kosong di awal
+    renderPin();
 
-const d4=document.getElementById('d4');
-const d5=document.getElementById('d5');
-const d6=document.getElementById('d6');
+    // Buat tombol angka secara otomatis
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, '⌫', 0, 'OK'].forEach(v => {
+        let btn = document.createElement('button');
+        btn.textContent = v;
+        btn.onclick = () => press(v);
+        keysContainer.appendChild(btn);
+    });
 
-const video6=document.getElementById('video6');
-const videoSource=document.getElementById('videoSource');
-const spotify=document.getElementById('spotify');
-const letter=document.getElementById('letter');
+    function press(v) {
+        if (v === '⌫') { 
+            p = p.slice(0, -1); 
+            return renderPin(); 
+        }
+        if (v === 'OK') { 
+            if (p === CONFIG.password) {
+                for (let i = 0; i < 25; i++) setTimeout(heart, i * 80);
+                nextSlide();
+            } else {
+                alert('Password salah 😝');
+                p = '';
+                renderPin();
+            }
+            return; 
+        }
+        if (p.length < 6) { 
+            p += v; 
+            renderPin(); 
+        }
+    }
 
-clue.textContent="clue : "+CONFIG.clue;
+    // --- LOGIKA GANTI SLIDE ---
+    // Di-expose ke global scope window agar tombol HTML "onclick" tetap bisa membacanya
+    window.nextSlide = function() {
+        document.getElementById('s' + current).classList.remove('active');
+        current++;
+        document.getElementById('s' + current).classList.add('active');
+        if (current === 11) {
+            typeLetter();
+            rain();
+        }
+    };
 
-p1.src=CONFIG.photo1;
-p2.src=CONFIG.photo2;
+    // --- LOGIKA SLIDER RATING ---
+    loveSlider.oninput = () => {
+        let val = +loveSlider.value;
+        loveText.textContent = val + '% ' + (val == 100 ? '💍okee ilam jugaa sayangg sama abi' : val > 70 ? '🤔​ hmmm' : val > 30 ? '😊 cukupp tw ilam' : '😭 masa cuma seginii?');
+    };
 
-d4.textContent=CONFIG.slide4Text;
-d5.textContent=CONFIG.slide5Text;
-d6.textContent=CONFIG.slide6Text;
+    // --- ANIMASI & EFEK LAINNYA ---
+    function heart() {
+        let h = document.createElement('div');
+        h.className = 'heart';
+        h.innerHTML = Math.random() > 0.5 ? '💙' : '💜';
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.top = '100vh';
+        document.body.appendChild(h);
+        h.animate([
+            { transform: 'translateY(0)' },
+            { transform: 'translateY(-120vh)' }
+        ], { duration: 4000 });
+        setTimeout(() => h.remove(), 4000);
+    }
 
-videoSource.src=CONFIG.video6;
-video6.load();
+    let started = false;
+    function typeLetter() {
+        if (started) return;
+        started = true;
+        let i = 0;
+        let s = CONFIG.letter;
+        let x = setInterval(() => {
+            letterText.textContent += s.charAt(i++);
+            if (i >= s.length) clearInterval(x);
+        }, 35);
+    }
 
-spotify.src="https://open.spotify.com/embed/playlist/08NO2uDXFFD1LDQ8l7QPEo";
-
-letter.textContent=CONFIG.letter;
-
-// PIN render
-function render(){
-pin.innerHTML='';
-for(let i=0;i<6;i++){
-let b=document.createElement('div');
-b.className='box';
-b.textContent=p[i]?'•':'';
-pin.appendChild(b);
-}
-}
-render();
-
-// keypad
-[1,2,3,4,5,6,7,8,9,'⌫',0,'OK'].forEach(v=>{
-let b=document.createElement('button');
-b.textContent=v;
-b.onclick=()=>press(v);
-keys.appendChild(b);
+    function rain() {
+        for (let i = 0; i < 40; i++) {
+            let e = document.createElement('div');
+            e.className = 'rain';
+            e.innerHTML = ['💙', '💜', '🐧', '🐨'][Math.floor(Math.random() * 4)];
+            e.style.left = Math.random() * 100 + 'vw';
+            e.style.top = '-50px';
+            e.style.animation = 'fall ' + (4 + Math.random() * 4) + 's linear infinite';
+            document.body.appendChild(e);
+        }
+    }
 });
-
-function press(v){
-if(v==='⌫'){p=p.slice(0,-1);render();return;}
-
-if(v==='OK'){
-if(p===CONFIG.password){
-for(let i=0;i<20;i++)setTimeout(()=>console.log("💙"),i*80);
-next();
-}else{
-alert("Password salah 😝");
-p='';render();
-}
-return;
-}
-
-if(p.length<6){p+=v;render();}
-}
-
-function next(){
-document.getElementById('s'+current).classList.remove('active');
-current++;
-document.getElementById('s'+current).classList.add('active');
-}
-
 </script>
-
 </body>
 </html>
