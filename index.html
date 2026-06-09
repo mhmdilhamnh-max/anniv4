@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-/* Ubah overflow dan height supaya bisa di-scroll */
 body{overflow-x:hidden;overflow-y:auto;min-height:100vh;color:#fff;background:linear-gradient(-45deg,#60A5FA,#818CF8,#8B5CF6,#A855F7);background-size:400% 400%;animation:bg 12s ease infinite}
 @keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .slide{display:none;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
@@ -17,13 +16,13 @@ body{overflow-x:hidden;overflow-y:auto;min-height:100vh;color:#fff;background:li
 .pin{display:flex;gap:8px;justify-content:center;margin:15px 0}
 .box{width:42px;height:52px;background:#fff;color:#6d28d9;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:600}
 .keys{display:grid;grid-template-columns:repeat(3,70px);gap:10px;justify-content:center;margin-top:20px}
-/* Efek klik tombol ditambahkan agar mirip lockscreen HP */
 .keys button{border:none;border-radius:16px;padding:12px;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:600;font-size:1.1rem;color:#333;background:#fff;transition:0.1s}
 .keys button:active{transform:scale(0.92);background:#e2e8f0}
 .next,.back{border:none;padding:12px 24px;border-radius:999px;margin-top:15px;cursor:pointer;font-family:'Poppins',sans-serif;color:#6d28d9;font-weight:600;background:#fff;transition:0.1s}
 .next:active,.back:active{transform:scale(0.95)}
 .slider{width:100%}
-.desc{font-size:1rem;font-weight:400;line-height:1.6;margin-top:10px}
+/* MENGUBAH FONT DESKRIPSI: Dibuat tebal (600) agar serasi dengan font title/judul */
+.desc{font-size:1.1rem;font-weight:600;line-height:1.6;margin-top:15px;color:#fff}
 .note{background:#fff;color:#333;padding:20px;border-radius:18px;text-align:left;white-space:pre-wrap;min-height:220px;font-size:1rem;line-height:1.6}
 iframe{width:100%;height:352px;border:none;border-radius:16px}
 .small{font-size:12px;margin-top:10px}
@@ -43,7 +42,8 @@ video6:"WhatsApp Video 2026-06-09 at 08.24.24.mp4",
 slide4Text:"Inii pas pertama kali abi ilam ngedatee, tak terasaa abi ilam udah 3 tahunn, ilam senangg bisaa ketemu abi",
 slide5Text:"Terima kasih abii udah jadi bagian dalam hidup ilamm, ilam berharap abi ilam bisa ngebuat kenangan2 dan ngelakuin banyak hal bareng terusss",
 slide6Text:"Ilam sayangg sama abii 💙💜, ini ada vidio recap abi ilam setahun terakhirr dari hp ilam",
-spotify:`<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/3n3Ppam7vgaBgEoMnPNPT8?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`, 
+// Menggunakan link embed terbaru yang kamu berikan
+spotify:`<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/08NO2uDXFFD1LDQ8l7QPEo?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`, 
 letter:`Helooo abi 💙💜\n\nHappy anniversary yang ke-3, abii!\nTak terasa udah 3 tahun abi ilam bareng terus, banyak hal yang udah kita lalui selama 3 tahun ini. Terima kasih yaa abii udah selalu jadii support sistem buat ilam, selalu ada buat ilam, selalu bisa ngertiin kondisi ilamm. Selama 3 tahun ini, takk semuanya berjalann mulus, kita lewatin banyak banget hal mulai dari yang senang-senang, sampai abi ilam berantem hebat, adu ego, saling ngambek, dan beda pendapat. Tapi dari semua itu, ilam bersyukur kita tak pernah nyerah satu sama lain. Makasih yaa abi udah selalu mau nurunin ego, mau diskusi cari jalan tengah, dan tetap milih ilamm pas kita lagi berantem hebat. Semoga ke depannya kita semakin dewasa ngadepin masalah dan semakin sabarr. I love you Abiii!`
 }
 </script>
@@ -109,7 +109,7 @@ letter:`Helooo abi 💙💜\n\nHappy anniversary yang ke-3, abii!\nTak terasa ud
 
 <div class="slide" id="s10"><div class="card">
 <h1>Laguu buat abii</h1>
-<div id="spotifyContainer"></div>
+<div id="spotifyContainer" style="margin-top: 15px;"></div>
 <button class="next" onclick="nextSlide()">Nexttt</button>
 </div></div>
 
@@ -120,11 +120,9 @@ letter:`Helooo abi 💙💜\n\nHappy anniversary yang ke-3, abii!\nTak terasa ud
 </div></div>
 
 <script>
-// Pastikan kode hanya berjalan setelah HTML beres dimuat
 document.addEventListener("DOMContentLoaded", () => {
     let current = 1, p = '';
     
-    // Tarik semua elemen menggunakan getElementById (Standar Aman)
     const clueEl = document.getElementById('clue');
     const p1El = document.getElementById('p1');
     const p2El = document.getElementById('p2');
@@ -140,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const loveText = document.getElementById('loveText');
     const letterText = document.getElementById('letter');
 
-    // Masukkan data dari CONFIG ke HTML
     clueEl.textContent = CONFIG.clue;
     p1El.src = CONFIG.photo1;
     p2El.src = CONFIG.photo2;
@@ -150,10 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
     videoSource.src = CONFIG.video6;
     videoPlayer.load();
     
-    // Render kode embed Spotify langsung ke dalam container
+    // Memasukkan full HTML iframe Spotify ke dalam wadah dengan aman
     spotifyContainer.innerHTML = CONFIG.spotify;
 
-    // --- LOGIKA KUNCI PIN ---
     function renderPin() {
         pinContainer.innerHTML = '';
         for (let i = 0; i < 6; i++) {
@@ -164,10 +160,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
-    // Render kotak PIN kosong di awal
     renderPin();
 
-    // Buat tombol angka secara otomatis
     [1, 2, 3, 4, 5, 6, 7, 8, 9, '⌫', 0, 'OK'].forEach(v => {
         let btn = document.createElement('button');
         btn.textContent = v;
@@ -197,8 +191,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- LOGIKA GANTI SLIDE ---
-    // Di-expose ke global scope window agar tombol HTML "onclick" tetap bisa membacanya
     window.nextSlide = function() {
         document.getElementById('s' + current).classList.remove('active');
         current++;
@@ -209,13 +201,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // --- LOGIKA SLIDER RATING ---
     loveSlider.oninput = () => {
         let val = +loveSlider.value;
         loveText.textContent = val + '% ' + (val == 100 ? '💍okee ilam jugaa sayangg sama abi' : val > 70 ? '🤔​ hmmm' : val > 30 ? '😊 cukupp tw ilam' : '😭 masa cuma seginii?');
     };
 
-    // --- ANIMASI & EFEK LAINNYA ---
     function heart() {
         let h = document.createElement('div');
         h.className = 'heart';
